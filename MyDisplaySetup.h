@@ -1,7 +1,14 @@
-
+/////////////////////////////////////////////////////////////////
+/*
+  QR Code Maker (ESP32+LVGL8)
+  For More Information: https://youtu.be/Ss3zBO-V9kI
+  Created by Eric N. (ThatProject)
+*/
+/////////////////////////////////////////////////////////////////
+//WT32-SC01(ST7796 Setup)
 #define LGFX_USE_V1
 #include <LovyanGFX.hpp>
-
+//FT6236 Capacitive Touch Screen
 #include <FT6236.h>
 #define SDA_FT6236 18
 #define SCL_FT6236 19

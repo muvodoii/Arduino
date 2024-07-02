@@ -1,11 +1,3 @@
-/////////////////////////////////////////////////////////////////
-/*
-  ESP32 | LVGL8 | Ep 3. Base Project for WiFi Settings
-  Video Tutorial: https://youtu.be/r62vfOhWXeo
-  Created by Eric N. (ThatProject)
-*/
-/////////////////////////////////////////////////////////////////
-
 // This project was made with a resolution of 480x320.
 // If your display's size is different from this,
 // you'll need to adjust the size and position of each widget a bit to fit it.
@@ -38,12 +30,12 @@ typedef enum {
   NETWORK_CONNECTED,
   NETWORK_CONNECT_FAILED
 } Network_Status_t;
+
 Network_Status_t networkStatus = NONE;
 
 /*Change to your screen resolution*/
 static const uint32_t screenWidth = 480;
 static const uint32_t screenHeight = 320;
-
 static lv_disp_draw_buf_t draw_buf;
 static lv_color_t buf[screenWidth * 10];
 static lv_style_t label_style;
@@ -275,7 +267,7 @@ static void btn_event_cb(lv_event_t *e) {
   }
 }
 
-static void timerForNetwork(lv_timer_t *timer) {
+void timerForNetwork(lv_timer_t *timer) {
   LV_UNUSED(timer);
 
   switch (networkStatus) {
@@ -306,7 +298,7 @@ static void timerForNetwork(lv_timer_t *timer) {
   }
 }
 
-static void showingFoundWiFiList() {
+ void showingFoundWiFiList() {
   if (foundWifiList.size() == 0 || foundNetworks == foundWifiList.size())
     return;
 
@@ -323,7 +315,7 @@ static void showingFoundWiFiList() {
 }
 
 
-static void buildBody() {
+ void buildBody() {
   lv_obj_t *bodyScreen = lv_obj_create(lv_scr_act());
   lv_obj_add_style(bodyScreen, &border_style, 0);
   lv_obj_set_size(bodyScreen, tft.width(), tft.height() - 34);
@@ -334,7 +326,7 @@ static void buildBody() {
   lv_obj_center(label);
 }
 
-static void buildSettings() {
+ void buildSettings() {
   settings = lv_obj_create(lv_scr_act());
   lv_obj_add_style(settings, &border_style, 0);
   lv_obj_set_size(settings, tft.width() - 100, tft.height() - 40);
@@ -362,7 +354,7 @@ static void buildSettings() {
   lv_obj_align_to(wfList, settinglabel, LV_ALIGN_TOP_LEFT, 0, 30);
 }
 
-static void list_event_handler(lv_event_t *e) {
+ void list_event_handler(lv_event_t *e) {
   lv_event_code_t code = lv_event_get_code(e);
   lv_obj_t *obj = lv_event_get_target(e);
 
